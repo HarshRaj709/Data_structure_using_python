@@ -33,7 +33,7 @@ class Sll:
 
     def isEmpty(self):
         if self.head == None:
-            print('Empty stack')
+            # print('Empty stack')
             return True
 
     def insertion_at_beg(self,data):
@@ -41,12 +41,16 @@ class Sll:
         newNode.next = self.head
         self.head = newNode
 
-    def insertion_at_last(self,data):
-        current = self.head
-        while(current.next != None):
-            current = current.next
-        newNode  = Node(data)
-        current.next = newNode
+    def insertion_at_last(self, data):
+        new_node = Node(data)
+        if not self.isEmpty():  
+            current = self.head
+            while current.next is not None:
+                current = current.next
+            current.next = new_node
+        else:
+            self.head = new_node
+            return
 
     def insertion_after_specific(self,data,after = None):
         if self.head == None:
